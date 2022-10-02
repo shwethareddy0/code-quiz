@@ -17,3 +17,32 @@ header {
 .scoreboard {
   color: blueviolet;
 }
+
+article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+h1 {
+  font-size: 50px;
+  padding: 20px;
+}
+
+article p {
+  font-size: 30px;
+  width: 55%;
+  text-align: center;
+  padding: 20px;
+}
+button {
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 25px;
+  background-color: blueviolet;
+  color: antiquewhite;
+}
