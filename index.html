@@ -10,7 +10,7 @@
   <body>
     <header>
       <div class="scoreboard">View high scores</div>
-      <div>Time: 0</div>
+      <div class="time"></div>
     </header>
 
     <article>
@@ -20,7 +20,15 @@
         limit. Keep in mind that incorrect answers will penalize your score/time
         by ten seconds!
       </p>
-      <button>Start Quiz</button>
+      <button id="button">Start Quiz</button>
+
+      <div class="questions" data-state="hidden"></div>
+      <div class="options-container">
+        <div class="option-box" class="options" data-state="hidden"></div>
+        <div class="option-box" class="options" data-state="hidden"></div>
+        <div class="option-box" class="options" data-state="hidden"></div>
+        <div class="option-box" class="options" data-state="hidden"></div>
+      </div>
     </article>
     <script src="./script.js"></script>
   </body>

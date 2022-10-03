@@ -1,3 +1,31 @@
+var timeEl = document.querySelector(".time");
+var secondsLeft = 11; //75;
+var buttonEl = document.getElementById("button");
+
+function setTime() {
+  var timerInterval = setInterval(function (e) {
+    secondsLeft = secondsLeft - 1;
+    console.log(secondsLeft);
+    timeEl.textContent = "Timer:" + secondsLeft;
+    if (secondsLeft <= 0) {
+      clearInterval(timerInterval);
+      timeEl.textContent = "All done!";
+      //sendMessage();
+    }
+  }, 1000);
+}
+
+function sendMessage() {
+  // timeEl.textContent = "";
+  var divLastEl = document.createElement("div");
+  divLastEl.textContent = "All done!";
+}
+//setTime();
+buttonEl.addEventListener("click", setTime);
+/*{
+  timeEl.textContent = "Timer:" + secondsLeft;
+}
+
 /* Code Quiz -Pseudo code
 
 —When start button is clicked, timer starts and a question is presented.
