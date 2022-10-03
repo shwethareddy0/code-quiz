@@ -58,6 +58,9 @@ article p {
   background-color: darkslateblue;
 }
 /*refers to styling of view high scores page */
+#high-scores-page {
+  display: none;
+}
 .scoreboard {
   display: flex;
   flex-direction: column;

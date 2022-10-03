@@ -23,14 +23,24 @@ function sendMessage() {
 
 buttonEl.addEventListener("click", setTime);
 
+var headerEl = document.querySelector(".header");
+var mainEl = document.querySelector(".main");
+var highScoresEl = document.getElementById("high-scores-page");
+
 //view view high scores section
-function viewHighScores() {}
-
-var scoresEl = document.getElementById("scores");
-var highScoresEl = document.getElementById(".highscores");
-highScoresEl.textContent = "High Scores";
-
-var input = document.createElement("input");
+function viewHighScores() {
+  headerEl.style.visibility = "hidden";
+  mainEl.style.display = "none";
+  highScoresEl.style.display = "initial";
+}
+function goBack() {
+  headerEl.style.visibility = "visible";
+  mainEl.style.display = "flex";
+  highScoresEl.style.display = "none";
+}
+function clearHighScores() {
+  localStorage.clear();
+}
 
 /* Code Quiz -Pseudo code
 

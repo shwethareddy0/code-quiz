@@ -8,8 +8,8 @@
   </head>
 
   <body>
-    <header>
-      <div class="highscores">View high scores</div>
+    <header class="header">
+      <div onclick="viewHighScores()" class="highscores">View high scores</div>
       <div class="time">Time:10</div>
     </header>
 
@@ -17,7 +17,7 @@
 
     <article>
       <!--Home Section-->
-      <section class="main" style="display: none">
+      <section class="main">
         <h1>Coding Quiz Challenge</h1>
         <p>
           Try to answer the following code-related questions within the time
@@ -38,7 +38,7 @@
         </div>
       </section>
       <!--Scores Submit section-->
-      <section class="scores submit" style="display: none">
+      <section class="scores-submit" style="display: none">
         <h2>All done!</h2>
         <div>Your final score is</div>
         <form>
@@ -49,15 +49,21 @@
       </section>
 
       <!---View high scores section-->
-      <section>
+      <section id="high-scores-page">
         <div class="scoreboard">
           <h2 class="high-scores-title">High Scores</h2>
           <div class="scorelist">
             <div>1. AB - 22</div>
           </div>
           <div class="score-button-container">
-            <button class="scorebutton" id="goback">Go back</button>
-            <button class="scorebutton" id="clearscores">
+            <button onclick="goBack()" class="scorebutton" id="goback">
+              Go back
+            </button>
+            <button
+              onclick="clearHighScores()"
+              class="scorebutton"
+              id="clearscores"
+            >
               Clear high scores
             </button>
           </div>
