@@ -9,26 +9,44 @@
 
   <body>
     <header>
-      <div class="scoreboard">View high scores</div>
-      <div class="time"></div>
+      <!---View high scores section-->
+      <section id="scores">
+        <div class="highscores">View high scores</div>
+        <div style="display: none">
+          <h2>High Scores</h2>
+          <input type="text" id="input" />
+          <button id="goback">Go back</button>
+          <button id="clearscores">Clear high scores</button>
+        </div>
+      </section>
+      <!---Timer Section-->
+      <section>
+        <div class="time"></div>
+      </section>
     </header>
 
     <article>
-      <h1>Coding Quiz Challenge</h1>
-      <p>
-        Try to answer the following code-related questions within the time
-        limit. Keep in mind that incorrect answers will penalize your score/time
-        by ten seconds!
-      </p>
-      <button id="button">Start Quiz</button>
+      <!--Home Section-->
+      <section class="main">
+        <h1>Coding Quiz Challenge</h1>
+        <p>
+          Try to answer the following code-related questions within the time
+          limit. Keep in mind that incorrect answers will penalize your
+          score/time by ten seconds!
+        </p>
+        <button id="button">Start Quiz</button>
+      </section>
 
-      <div class="questions" data-state="hidden"></div>
-      <div class="options-container">
-        <div class="option-box" class="options" data-state="hidden"></div>
-        <div class="option-box" class="options" data-state="hidden"></div>
-        <div class="option-box" class="options" data-state="hidden"></div>
-        <div class="option-box" class="options" data-state="hidden"></div>
-      </div>
+      <!--Questions & Answers section-->
+      <section style="display: none" class="main">
+        <div class="questions" data-state="hidden"></div>
+        <div class="options-container">
+          <div class="option-box" class="options" data-state="hidden"></div>
+          <div class="option-box" class="options" data-state="hidden"></div>
+          <div class="option-box" class="options" data-state="hidden"></div>
+          <div class="option-box" class="options" data-state="hidden"></div>
+        </div>
+      </section>
     </article>
     <script src="./script.js"></script>
   </body>

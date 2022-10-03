@@ -14,11 +14,11 @@ header {
   padding: 20px;
 }
 
-.scoreboard {
+.highscores {
   color: blueviolet;
 }
 
-article {
+.main {
   display: flex;
   flex-direction: column;
   justify-content: center;

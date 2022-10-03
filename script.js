@@ -1,3 +1,4 @@
+//timer section
 var timeEl = document.querySelector(".time");
 var secondsLeft = 11; //75;
 var buttonEl = document.getElementById("button");
@@ -16,15 +17,18 @@ function setTime() {
 }
 
 function sendMessage() {
-  // timeEl.textContent = "";
   var divLastEl = document.createElement("div");
   divLastEl.textContent = "All done!";
 }
-//setTime();
+
 buttonEl.addEventListener("click", setTime);
-/*{
-  timeEl.textContent = "Timer:" + secondsLeft;
-}
+
+//view high scores section
+var scoresEl = document.getElementById("scores");
+var highScoresEl = document.getElementById(".highscores");
+highScoresEl.textContent = "High Scores";
+
+var input = document.createElement("input");
 
 /* Code Quiz -Pseudo code
 
