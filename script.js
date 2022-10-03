@@ -7,10 +7,10 @@ function setTime() {
   var timerInterval = setInterval(function (e) {
     secondsLeft = secondsLeft - 1;
     console.log(secondsLeft);
-    timeEl.textContent = "Timer:" + secondsLeft;
+    timeEl.textContent = "Time:" + secondsLeft;
     if (secondsLeft <= 0) {
       clearInterval(timerInterval);
-      timeEl.textContent = "All done!";
+      //timeEl.textContent = "All done!";
       //sendMessage();
     }
   }, 1000);
@@ -23,7 +23,9 @@ function sendMessage() {
 
 buttonEl.addEventListener("click", setTime);
 
-//view high scores section
+//view view high scores section
+function viewHighScores() {}
+
 var scoresEl = document.getElementById("scores");
 var highScoresEl = document.getElementById(".highscores");
 highScoresEl.textContent = "High Scores";

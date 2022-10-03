@@ -9,32 +9,22 @@
 
   <body>
     <header>
-      <!---View high scores section-->
-      <section id="scores">
-        <div class="highscores">View high scores</div>
-        <div style="display: none">
-          <h2>High Scores</h2>
-          <input type="text" id="input" />
-          <button id="goback">Go back</button>
-          <button id="clearscores">Clear high scores</button>
-        </div>
-      </section>
-      <!---Timer Section-->
-      <section>
-        <div class="time"></div>
-      </section>
+      <div class="highscores">View high scores</div>
+      <div class="time">Time:10</div>
     </header>
+
+    <!---Timer Section-->
 
     <article>
       <!--Home Section-->
-      <section class="main">
+      <section class="main" style="display: none">
         <h1>Coding Quiz Challenge</h1>
         <p>
           Try to answer the following code-related questions within the time
           limit. Keep in mind that incorrect answers will penalize your
           score/time by ten seconds!
         </p>
-        <button id="button">Start Quiz</button>
+        <button class="startbutton" id="button">Start Quiz</button>
       </section>
 
       <!--Questions & Answers section-->
@@ -56,6 +46,22 @@
           <input type="text" />
           <input type="submit" value="Submit" />
         </form>
+      </section>
+
+      <!---View high scores section-->
+      <section>
+        <div class="scoreboard">
+          <h2 class="high-scores-title">High Scores</h2>
+          <div class="scorelist">
+            <div>1. AB - 22</div>
+          </div>
+          <div class="score-button-container">
+            <button class="scorebutton" id="goback">Go back</button>
+            <button class="scorebutton" id="clearscores">
+              Clear high scores
+            </button>
+          </div>
+        </div>
       </section>
     </article>
     <script src="./script.js"></script>
