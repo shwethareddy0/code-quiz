@@ -24,17 +24,19 @@
           limit. Keep in mind that incorrect answers will penalize your
           score/time by ten seconds!
         </p>
-        <button class="startbutton" id="button">Start Quiz</button>
+        <button onclick="chosenQuestion()" class="startbutton" id="button">
+          Start Quiz
+        </button>
       </section>
 
       <!--Questions & Answers section-->
-      <section class="main" style="display: none">
-        <div class="questions" data-state="hidden"></div>
+      <section class="questions-answers">
+        <h1 class="question"></h1>
         <div class="options-container">
-          <div class="option-box" class="options" data-state="hidden"></div>
-          <div class="option-box" class="options" data-state="hidden"></div>
-          <div class="option-box" class="options" data-state="hidden"></div>
-          <div class="option-box" class="options" data-state="hidden"></div>
+          <div class="option-box" class="options"></div>
+          <div class="option-box" class="options"></div>
+          <div class="option-box" class="options"></div>
+          <div class="option-box" class="options"></div>
         </div>
       </section>
       <!--Scores Submit section-->

@@ -42,7 +42,46 @@ function clearHighScores() {
   localStorage.clear();
 }
 
-/* Code Quiz -Pseudo code
+//Question and Answers for the code Quiz
+
+var questionAnswerList = [
+  {
+    question: "Which of the following is not javascript data types?",
+    options: [
+      "Null type",
+      "Undefined type",
+      "Number type",
+      "All of the mentioned",
+    ],
+    result: "All of the mentioned",
+  },
+  {
+    question:
+      "Which of the following function of String object returns the calling string value converted to lower case?Which of the following is not javascript data types?",
+    options: [
+      "toLocaleLowerCase()",
+      "toLowerCase()",
+      "toString()",
+      "substring()",
+    ],
+    result: "toLowerCase()",
+  },
+];
+var questionEl = document.querySelector(".question");
+
+function chosenQuestion() {
+  var randomQuestionObj =
+    questionAnswerList[Math.floor(Math.random() * questionAnswerList.length)];
+  mainEl.style.display = "none";
+  highScoresEl.style.display = "none";
+  questionEl.textContent = randomQuestionObj.question;
+}
+
+/* 
+for (var i=0;i<questionAnswerList,i++){
+
+}
+Code Quiz -Pseudo code
 
 —When start button is clicked, timer starts and a question is presented.
 —Once answer it, - correctly or incorrectly - another one is presented

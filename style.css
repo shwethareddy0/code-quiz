@@ -46,9 +46,14 @@ article p {
   background-color: blueviolet;
   color: antiquewhite;
 }
-.choice-container {
+
+.options-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
 }
 .option-box {
   width: 200px;
@@ -93,4 +98,17 @@ article p {
   padding: 10px;
   background-color: darkslateblue;
   color: antiquewhite;
+}
+
+/*styling the question*/
+.questions-answers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+.question {
+  width: 70%;
 }
