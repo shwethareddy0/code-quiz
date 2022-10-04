@@ -62,8 +62,8 @@ article p {
   font-size: 40px;
   padding: 10px;
 }
-.scorelist {
-  width: 80%;
+.scorelist div {
+  width: 100%;
   height: 50px;
   background-color: lavender;
   padding: 10px;
@@ -107,12 +107,15 @@ article p {
   height: auto;
 }
 .options {
-  width: 200px;
+  width: 300px;
   height: 50px;
   border-radius: 10px;
   margin: 20px;
   background-color: darkslateblue;
   color: antiquewhite;
+  font-size: 25px;
+  text-align: center;
+  padding: 10px;
 }
 .scores-submit {
   display: flex;
