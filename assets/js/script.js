@@ -18,8 +18,6 @@ function setTime() {
     timeEl.textContent = "Time:" + secondsLeft;
     if (secondsLeft <= 0) {
       clearInterval(timerInterval);
-      //timeEl.textContent = "All done!";
-      //sendMessage();
     }
   }, 1000);
 }
