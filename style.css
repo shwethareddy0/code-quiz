@@ -114,3 +114,11 @@ article p {
   background-color: darkslateblue;
   color: antiquewhite;
 }
+.scores-submit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}

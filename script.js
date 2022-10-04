@@ -1,11 +1,19 @@
 //timer section
 var timeEl = document.querySelector(".time");
-var secondsLeft = 11; //75;
+var secondsLeft = 30; //75;
 var buttonEl = document.getElementById("button");
+var timerInterval;
+timeEl.textContent = "Time:" + secondsLeft;
 
 function setTime() {
-  var timerInterval = setInterval(function (e) {
+  timerInterval = setInterval(function (e) {
     secondsLeft = secondsLeft - 1;
+    if (secondsLeft <= 0) {
+      secondsLeft = 0;
+      timeEl.textContent = "Time:" + secondsLeft;
+      gameOver();
+      return;
+    }
     console.log(secondsLeft);
     timeEl.textContent = "Time:" + secondsLeft;
     if (secondsLeft <= 0) {
@@ -32,14 +40,31 @@ function viewHighScores() {
   headerEl.style.visibility = "hidden";
   mainEl.style.display = "none";
   highScoresEl.style.display = "initial";
+  readScoresFromLocalStorage();
+}
+function readScoresFromLocalStorage() {
+  var quizFinalScores = JSON.parse(localStorage.getItem("quiz-final-scores"));
+  var scoreListEl = document.querySelector(".scorelist");
+  scoreListEl.innerHTML = "";
+  if (quizFinalScores === null) {
+    return;
+  } else {
+    for (var i = 0; i < quizFinalScores.length; i++) {
+      var scoreDiv = document.createElement("div");
+      scoreDiv.textContent = quizFinalScores[i];
+      scoreListEl.appendChild(scoreDiv);
+    }
+  }
 }
 function goBack() {
   headerEl.style.visibility = "visible";
   mainEl.style.display = "flex";
   highScoresEl.style.display = "none";
-}
+  scoresSubmitEl.style.display="none";
+  
 function clearHighScores() {
   localStorage.clear();
+  readScoresFromLocalStorage();
 }
 
 //Question and Answers for the code Quiz
@@ -53,7 +78,7 @@ var questionAnswerList = [
       "3. Number type",
       "4. All of the mentioned",
     ],
-    result: "All of the mentioned",
+    result: 3,
   },
   {
     question:
@@ -64,7 +89,7 @@ var questionAnswerList = [
       "3. toString()",
       "4. substring()",
     ],
-    result: "toLowerCase()",
+    result: 1,
   },
   {
     question:
@@ -75,19 +100,19 @@ var questionAnswerList = [
       "3. toLocaleString()",
       "4. toPrecision()",
     ],
-    result: "valueOf()",
+    result: 1,
   },
   {
     question:
       "Which of the following object is the main entry point to all client-side JavaScript features and APIs?",
     options: ["1. Position", "2. Window", "3. Standard", "4. Location"],
-    result: "Window",
+    result: 1,
   },
   {
     question:
       "Which of the following function of Array object returns a new array comprised of this array joined with other array(s) and/or value(s)?",
     options: ["1. concat()", "2. pop()", "3. push()", "4. some()"],
-    result: "concat()",
+    result: 0,
   },
 ];
 
@@ -105,18 +130,79 @@ function startQuiz() {
   questionEl.textContent = randomQuestionObj.question;
   for (i = 0; i < optionsElList.length; i++) {
     optionsElList[i].style.display = "initial";
+    if (i === randomQuestionObj.result) {
+      optionsElList[i].setAttribute("data-correct", true);
+    } else {
+      optionsElList[i].setAttribute("data-correct", false);
+    }
     optionsElList[i].textContent = randomQuestionObj.options[i];
   }
 }
+//refers to the result container
+var resultEl = document.querySelector(".result-container");
+var showResultEl = document.querySelector(".result");
 
-function validateAndNextDisplayQuestion() {
+/*Validating the result and displaying the next question with options*/
+
+function validateAndNextDisplayQuestion(clickedOption) {
+  if (questionAnswerList.length === 0) {
+    gameOver();
+    return;
+  }
+  resultEl.style.display = "flex";
+  if (clickedOption.getAttribute("data-correct") == "true") {
+    showResultEl.textContent = "Correct!";
+  } else {
+    secondsLeft = secondsLeft - 5;
+    showResultEl.textContent = "Wrong!";
+  }
+
   var randomIndex = Math.floor(Math.random() * questionAnswerList.length);
   var randomQuestionObj = questionAnswerList[randomIndex];
   questionAnswerList.splice(randomIndex, 1);
   questionEl.textContent = randomQuestionObj.question;
   for (i = 0; i < optionsElList.length; i++) {
     optionsElList[i].textContent = randomQuestionObj.options[i];
+    if (i === randomQuestionObj.result) {
+      optionsElList[i].setAttribute("data-correct", true);
+    } else {
+      optionsElList[i].setAttribute("data-correct", false);
+    }
   }
+}
+var scoresSubmitEl = document.querySelector(".scores-submit");
+var finalScoresEl = document.querySelector(".final-score");
+
+/*game over and enter iintials and submit*/
+function gameOver() {
+  questionAnswerSectionEl.style.display = "none";
+  headerEl.style.visibility = "visible";
+  scoresSubmitEl.style.display = "flex";
+  finalScoresEl.textContent = secondsLeft;
+  clearInterval(timerInterval);
+}
+
+//submit button for final score
+var initialsTextBoxEl = document.querySelector(".initials-text-box");
+function submitInitials(event) {
+  event.preventDefault();
+  var initialsValue = initialsTextBoxEl.value;
+
+  //read the data localstorage
+  var quizFinalScores = JSON.parse(localStorage.getItem("quiz-final-scores"));
+  if (quizFinalScores == null) {
+    quizFinalScores = ["1. " + initialsValue + " - " + secondsLeft];
+    localStorage.setItem("quiz-final-scores", JSON.stringify(quizFinalScores));
+  } else {
+    quizFinalScores.push(
+      quizFinalScores.length + 1 + ". " + initialsValue + " - " + secondsLeft
+    );
+    localStorage.setItem("quiz-final-scores", JSON.stringify(quizFinalScores));
+  }
+  // hide submit form
+  // show high scores section
+  scoresSubmitEl.style.display = "none";
+  viewHighScores();
 }
 
 /* 

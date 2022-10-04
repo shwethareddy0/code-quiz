@@ -10,7 +10,7 @@
   <body>
     <header class="header">
       <div onclick="viewHighScores()" class="highscores">View high scores</div>
-      <div class="time">Time:10</div>
+      <div class="time">Time:</div>
     </header>
 
     <!---Timer Section-->
@@ -33,12 +33,24 @@
       <section class="questions-answers" style="display: none">
         <h1 class="question"></h1>
         <div class="options-container">
-          <div onclick="validateAndNextDisplayQuestion()" class="options"></div>
-          <div onclick="validateAndNextDisplayQuestion()" class="options"></div>
-          <div onclick="validateAndNextDisplayQuestion()" class="options"></div>
-          <div onclick="validateAndNextDisplayQuestion()" class="options"></div>
+          <div
+            onclick="validateAndNextDisplayQuestion(this)"
+            class="options"
+          ></div>
+          <div
+            onclick="validateAndNextDisplayQuestion(this)"
+            class="options"
+          ></div>
+          <div
+            onclick="validateAndNextDisplayQuestion(this)"
+            class="options"
+          ></div>
+          <div
+            onclick="validateAndNextDisplayQuestion(this)"
+            class="options"
+          ></div>
         </div>
-        <div class="result-container">
+        <div class="result-container" style="display: none">
           <hr />
           <div class="result"></div>
         </div>
@@ -46,11 +58,11 @@
       <!--Scores Submit section-->
       <section class="scores-submit" style="display: none">
         <h2>All done!</h2>
-        <div>Your final score is</div>
+        <div>Your final score is <span class="final-score"></span></div>
         <form>
           <label>Enter Initials:</label>
-          <input type="text" />
-          <input type="submit" value="Submit" />
+          <input class="initials-text-box" type="text" />
+          <input onclick="submitInitials(event)" type="submit" value="Submit" />
         </form>
       </section>
 
@@ -58,9 +70,7 @@
       <section id="high-scores-page">
         <div class="scoreboard">
           <h2 class="high-scores-title">High Scores</h2>
-          <div class="scorelist">
-            <div>1. AB - 22</div>
-          </div>
+          <div class="scorelist"></div>
           <div class="score-button-container">
             <button onclick="goBack()" class="scorebutton" id="goback">
               Go back
