@@ -69,11 +69,15 @@ var questionAnswerList = [
 ];
 var questionEl = document.querySelector(".question");
 var optionsElList = document.querySelectorAll(".options");
-function chosenQuestion() {
-  var randomQuestionObj =
-    questionAnswerList[Math.floor(Math.random() * questionAnswerList.length)];
+var questionAnswerSectionEl = document.querySelector(".questions-answers");
+
+function startQuiz() {
+  questionAnswerSectionEl.style.display = "flex";
   mainEl.style.display = "none";
   highScoresEl.style.display = "none";
+  var randomIndex = Math.floor(Math.random() * questionAnswerList.length);
+  var randomQuestionObj = questionAnswerList[randomIndex];
+  questionAnswerList.splice(randomIndex, 1);
   questionEl.textContent = randomQuestionObj.question;
   for (i = 0; i < optionsElList.length; i++) {
     optionsElList[i].style.display = "initial";
@@ -81,10 +85,18 @@ function chosenQuestion() {
   }
 }
 
-/* 
-for (var i=0;i<questionAnswerList,i++){
-
+function validateAndNextDisplayQuestion() {
+  var randomIndex = Math.floor(Math.random() * questionAnswerList.length);
+  var randomQuestionObj = questionAnswerList[randomIndex];
+  questionAnswerList.splice(randomIndex, 1);
+  questionEl.textContent = randomQuestionObj.question;
+  for (i = 0; i < optionsElList.length; i++) {
+    optionsElList[i].textContent = randomQuestionObj.options[i];
+  }
 }
+
+/* 
+
 Code Quiz -Pseudo code
 
 —When start button is clicked, timer starts and a question is presented.
