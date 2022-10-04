@@ -68,13 +68,17 @@ var questionAnswerList = [
   },
 ];
 var questionEl = document.querySelector(".question");
-
+var optionsElList = document.querySelectorAll(".options");
 function chosenQuestion() {
   var randomQuestionObj =
     questionAnswerList[Math.floor(Math.random() * questionAnswerList.length)];
   mainEl.style.display = "none";
   highScoresEl.style.display = "none";
   questionEl.textContent = randomQuestionObj.question;
+  for (i = 0; i < optionsElList.length; i++) {
+    optionsElList[i].style.display = "initial";
+    optionsElList[i].textContent = randomQuestionObj.options[i];
+  }
 }
 
 /* 
