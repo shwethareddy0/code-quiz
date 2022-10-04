@@ -48,25 +48,49 @@ var questionAnswerList = [
   {
     question: "Which of the following is not javascript data types?",
     options: [
-      "Null type",
-      "Undefined type",
-      "Number type",
-      "All of the mentioned",
+      "1. Null type",
+      "2. Undefined type",
+      "3. Number type",
+      "4. All of the mentioned",
     ],
     result: "All of the mentioned",
   },
   {
     question:
-      "Which of the following function of String object returns the calling string value converted to lower case?Which of the following is not javascript data types?",
+      "Which of the following function of String object returns the calling string value converted to lower case?",
     options: [
-      "toLocaleLowerCase()",
-      "toLowerCase()",
-      "toString()",
-      "substring()",
+      "1. toLocaleLowerCase()",
+      "2. toLowerCase()",
+      "3. toString()",
+      "4. substring()",
     ],
     result: "toLowerCase()",
   },
+  {
+    question:
+      "Which of the following function of Number object returns the number's value?",
+    options: [
+      "1. toString()",
+      "2. valueOf()",
+      "3. toLocaleString()",
+      "4. toPrecision()",
+    ],
+    result: "valueOf()",
+  },
+  {
+    question:
+      "Which of the following object is the main entry point to all client-side JavaScript features and APIs?",
+    options: ["1. Position", "2. Window", "3. Standard", "4. Location"],
+    result: "Window",
+  },
+  {
+    question:
+      "Which of the following function of Array object returns a new array comprised of this array joined with other array(s) and/or value(s)?",
+    options: ["1. concat()", "2. pop()", "3. push()", "4. some()"],
+    result: "concat()",
+  },
 ];
+
 var questionEl = document.querySelector(".question");
 var optionsElList = document.querySelectorAll(".options");
 var questionAnswerSectionEl = document.querySelector(".questions-answers");
