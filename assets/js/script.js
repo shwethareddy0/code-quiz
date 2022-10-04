@@ -1,10 +1,11 @@
 //timer section
 var timeEl = document.querySelector(".time");
-var secondsLeft = 30; //75;
+var secondsLeft = 75;
 var buttonEl = document.getElementById("button");
 var timerInterval;
 timeEl.textContent = "Time:" + secondsLeft;
 
+//function for setting the timer.
 function setTime() {
   timerInterval = setInterval(function (e) {
     secondsLeft = secondsLeft - 1;
@@ -21,14 +22,15 @@ function setTime() {
     }
   }, 1000);
 }
-
+//creating div element with All done message.
 function sendMessage() {
   var divLastEl = document.createElement("div");
   divLastEl.textContent = "All done!";
 }
-
+//Button addeventlistener event for timer.
 buttonEl.addEventListener("click", setTime);
 
+//variables for header , main and view highscores elements
 var headerEl = document.querySelector(".header");
 var mainEl = document.querySelector(".main");
 var highScoresEl = document.getElementById("high-scores-page");
@@ -41,6 +43,8 @@ function viewHighScores() {
   scoresSubmitEl.style.display = "none";
   readScoresFromLocalStorage();
 }
+
+//function for local storage, creating elemet Div and appending it.
 function readScoresFromLocalStorage() {
   var quizFinalScores = JSON.parse(localStorage.getItem("quiz-final-scores"));
   var scoreListEl = document.querySelector(".scorelist");
@@ -55,19 +59,21 @@ function readScoresFromLocalStorage() {
     }
   }
 }
+//function for go back button
 function goBack() {
   headerEl.style.visibility = "visible";
   mainEl.style.display = "flex";
   highScoresEl.style.display = "none";
   scoresSubmitEl.style.display = "none";
 }
+//function for clear high scores button
 function clearHighScores() {
   localStorage.clear();
   readScoresFromLocalStorage();
 }
 
-//Question and Answers for the code Quiz
-
+//Question and Answers list for the code Quiz
+//this array has objects for questions, options and results.
 var questionAnswerList = [
   {
     question: "Which of the following is not javascript data types?",
@@ -114,11 +120,12 @@ var questionAnswerList = [
     result: 0,
   },
 ];
-
+//variables for questions,options and question answersection elements
 var questionEl = document.querySelector(".question");
 var optionsElList = document.querySelectorAll(".options");
 var questionAnswerSectionEl = document.querySelector(".questions-answers");
 
+//function for executing the code quiz
 function startQuiz() {
   questionAnswerSectionEl.style.display = "flex";
   mainEl.style.display = "none";
@@ -142,8 +149,7 @@ function startQuiz() {
 var resultEl = document.querySelector(".result-container");
 var showResultEl = document.querySelector(".result");
 
-/*Validating the result and displaying the next question with options*/
-
+//Validating the result and displaying the next question with options.
 function validateAndNextDisplayQuestion(clickedOption) {
   if (questionAnswerList.length === 0) {
     gameOver();
@@ -153,10 +159,10 @@ function validateAndNextDisplayQuestion(clickedOption) {
   if (clickedOption.getAttribute("data-correct") == "true") {
     showResultEl.textContent = "Correct!";
   } else {
-    secondsLeft = secondsLeft - 5;
+    //Deducting 10 seconds from the timer for wrong answer.
+    secondsLeft = secondsLeft - 10;
     showResultEl.textContent = "Wrong!";
   }
-
   var randomIndex = Math.floor(Math.random() * questionAnswerList.length);
   var randomQuestionObj = questionAnswerList[randomIndex];
   questionAnswerList.splice(randomIndex, 1);
@@ -170,10 +176,11 @@ function validateAndNextDisplayQuestion(clickedOption) {
     }
   }
 }
+
 var scoresSubmitEl = document.querySelector(".scores-submit");
 var finalScoresEl = document.querySelector(".final-score");
 
-/*game over and enter iintials and submit*/
+//game over and enter iintials and submit form
 function gameOver() {
   questionAnswerSectionEl.style.display = "none";
   headerEl.style.visibility = "visible";
@@ -199,6 +206,7 @@ function submitInitials(event) {
     );
     localStorage.setItem("quiz-final-scores", JSON.stringify(quizFinalScores));
   }
+
   // hide submit form
   // show high scores section
   scoresSubmitEl.style.display = "none";

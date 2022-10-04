@@ -13,11 +13,11 @@ header {
   margin: 20px;
   padding: 20px;
 }
-
+/*view high scores heading*/
 .highscores {
   color: blueviolet;
 }
-
+/*refers to styling of main section in body element*/
 .main {
   display: flex;
   flex-direction: column;
@@ -38,6 +38,8 @@ article p {
   text-align: center;
   padding: 20px;
 }
+
+/*start quiz button styling*/
 .startbutton {
   width: 200px;
   height: 50px;
@@ -57,10 +59,14 @@ article p {
   align-items: flex-start;
   justify-content: space-around;
   margin-left: 250px;
+  width: 80%;
 }
 .high-scores-title {
   font-size: 40px;
   padding: 10px;
+}
+.scorelist {
+  width: 60%;
 }
 .scorelist div {
   width: 100%;
@@ -70,14 +76,16 @@ article p {
   margin: 10px;
   font-size: 25px;
 }
+/*score button styling*/
 .score-button-container {
   display: flex;
   width: 60%;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .scorebutton {
   width: auto;
   height: 50px;
+  margin-right: 20px;
   border-radius: 10px;
   font-size: 25px;
   padding: 10px;
@@ -85,7 +93,7 @@ article p {
   color: antiquewhite;
 }
 
-/*styling the question*/
+/*styling the question section*/
 .questions-answers {
   display: flex;
   flex-direction: column;
@@ -97,7 +105,7 @@ article p {
 .question {
   width: 70%;
 }
-
+/*refers to the options section*/
 .options-container {
   display: flex;
   flex-direction: column;
@@ -124,4 +132,22 @@ article p {
   align-items: center;
   width: 100%;
   height: auto;
+  font-size: 30px;
+}
+.scores-submit form {
+  width: 90%;
+  text-align: center;
+}
+/*refers to input text box*/
+.initials-text-box {
+  width: 300px;
+  height: 50px;
+  border: 2px solid lightblue;
+  margin-right: 20px;
+}
+
+.result {
+  font-size: 50px;
+  color: gray;
+  margin-top: 30px;
 }
